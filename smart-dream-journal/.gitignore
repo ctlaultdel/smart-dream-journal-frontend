@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# yarn lock file that could interfere with deployment on heroku
+yarn.lock
+
 # testing
 /coverage
 
