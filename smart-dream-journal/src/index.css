@@ -12,4 +12,7 @@ code {
     monospace;
 }
 
-body {background-color: coral;}
+body {
+  background-image: url("../public/sleeping.jpg");
+  background-size: 1300px;
+}

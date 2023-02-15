@@ -15,6 +15,9 @@ yarn.lock
 /build
 
 # misc
+/.gitignore
+/../.env
+.env
 .DS_Store
 .env.local
 .env.development.local
