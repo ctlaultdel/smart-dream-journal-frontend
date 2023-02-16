@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/home";
-import About from "./components/about";
-import Contact from "./components/contact";
-import Blog from "./components/blog/blog";
-import Posts from "./components/blog/posts";
+import Analyses from "./components/analyses";
+import Calendar from "./components/calendar";
+import Journal from "./components/entries/journal";
+import Entries from "./components/entries/entries";
 
 // get all User Entries
 const getUserEntries = () => {
@@ -31,11 +31,11 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/blog" element={<Blog />}>
-        <Route path="" element={<Posts userEntries={userEntries} />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/analyses" element={<Analyses />} />
+      <Route path="/calendar" element={<Calendar />} />
+      <Route path="/journal" element={<Journal />}>
+        <Route path="" element={<Entries userEntries={userEntries} />} />
       </Route>
     </Routes>
   );

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Posts({ userEntries }) {
+function Entries({ userEntries }) {
   const entriesList = userEntries.map((entry) => {
     return (
       <section className="col-lg-5" key={entry.id}>
-        <Link to="/blog/entry-title">
+        <Link to={"/journal/" + entry.title}>
           <h1 className="font-weight-light">
             {entry.title} {entry.mood}
           </h1>
@@ -22,4 +22,4 @@ function Posts({ userEntries }) {
   );
 }
 
-export default Posts;
+export default Entries;
