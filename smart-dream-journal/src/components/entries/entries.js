@@ -5,7 +5,7 @@ function Entries({ userEntries }) {
   const entriesList = userEntries.map((entry) => {
     return (
       <section className="col-lg-5" key={entry.id}>
-        <Link to={"/journal/" + entry.title}>
+        <Link to={"/journal/" + entry.id}>
           <h1 className="font-weight-light">
             {entry.title} {entry.mood}
           </h1>
