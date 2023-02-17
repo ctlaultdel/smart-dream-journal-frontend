@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Main from "./components/main";
+import Login from "./components/login";
 import Home from "./components/home";
 import Analyses from "./components/analyses";
 import Calendar from "./components/calendar";
@@ -36,13 +36,12 @@ function App() {
   if (!token) {
     return (
       <Routes>
-        <Route path="/" element={<Main setToken={setToken} />} />
+        <Route path="/" element={<Login setToken={setToken} />} />
       </Routes>
     );
   } else {
     return (
       <Routes>
-        <Route path="/" element={<Main />} />
         <Route path="/profile" element={<Home />} />
         <Route path="/profile/analyses" element={<Analyses />} />
         <Route path="/profile/calendar" element={<Calendar />} />
