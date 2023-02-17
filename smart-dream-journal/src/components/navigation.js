@@ -12,23 +12,23 @@ function Navigation() {
           <div>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/home">
+                <NavLink className="nav-link" to="/profile">
                   Home
                   <span className="sr-only">(current)</span>
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/analyses">
+                <NavLink className="nav-link" to="/profile/analyses">
                   Analyses
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/calendar">
+                <NavLink className="nav-link" to="/profile/calendar">
                   Calendar
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/journal">
+                <NavLink className="nav-link" to="/profile/journal">
                   Journal
                 </NavLink>
               </li>
