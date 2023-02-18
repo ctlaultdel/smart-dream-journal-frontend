@@ -39,7 +39,8 @@ function Login() {
     });
     // setToken(sessionStorage.getItem("token"));
     console.log(token);
-    navigate("/profile");
+    if (token === sessionStorage.getItem("token") && token !== null)
+      navigate("/profile");
   };
 
   return (
