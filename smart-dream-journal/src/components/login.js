@@ -16,7 +16,6 @@ async function setSessionToken(credentials) {
       }
     })
     .then((data) => {
-      console.log(data);
       sessionStorage.setItem("token", data.access_token);
     })
     .catch((error) => console.log(error));
@@ -37,10 +36,8 @@ function Login() {
       username,
       password,
     });
-    // setToken(sessionStorage.getItem("token"));
-    console.log(token);
-    if (token === sessionStorage.getItem("token") && token !== null)
-      navigate("/profile");
+    setToken(sessionStorage.getItem("token"));
+    if (token !== null) navigate("/profile");
   };
 
   return (
