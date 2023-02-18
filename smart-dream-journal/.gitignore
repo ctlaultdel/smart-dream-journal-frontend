@@ -7,6 +7,7 @@
 
 # yarn lock file that could interfere with deployment on heroku
 yarn.lock
+package-lock.json
 
 # testing
 /coverage

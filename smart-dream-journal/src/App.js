@@ -9,6 +9,7 @@ import Journal from "./components/entries/journal";
 import Entries from "./components/entries/entries";
 import Entry from "./components/entries/entry";
 import Register from "./components/register";
+import Main from "./components/main";
 import { AuthProvider } from "./contexts/authContext";
 import { useAuth } from "./contexts/authContext";
 
@@ -24,31 +25,9 @@ const getUserEntries = async () => {
     });
 };
 
-// async function setSessionToken(credentials) {
-//   return fetch(`${process.env.REACT_APP_BACKEND_URL}/token`, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(credentials),
-//   })
-//     .then((response) => {
-//       if (response.status === 200) {
-//         return response.json();
-//       }
-//     })
-//     .then((data) => {
-//       sessionStorage.setItem("token", data.access_token);
-//     })
-//     .catch((error) => console.log(error));
-// }
-
 function App() {
   // App states
-  // states
   const [userEntries, setUserEntries] = useState([]);
-  // const { token, setToken } = useAuth(sessionStorage.getItem("token"));
-  // const navigate = useNavigate();
 
   // Functions for updating states
   useEffect(() => {
@@ -60,7 +39,8 @@ function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Home />} />
         <Route path="/profile/analyses" element={<Analyses />} />
