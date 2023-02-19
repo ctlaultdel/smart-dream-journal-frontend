@@ -54,7 +54,7 @@ function Login() {
                 <label htmlFor="username">Username: </label>
                 <input
                   type="text"
-                  placeholder="username"
+                  placeholder="username or email"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />

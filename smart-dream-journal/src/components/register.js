@@ -1,27 +1,34 @@
 import { useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 
-// Function for API post request
-async function loginUser(credentials) {
+// Function for API post request for user registration
+async function registerUser(credentials) {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(credentials),
-  }).then((data) => data.json());
+  }).then((response) => response.status);
 }
 
 function Register() {
   const [username, setUserName] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await loginUser({
+    const response = await registerUser({
       username,
+      email,
       password,
     });
+    if (response === 201) {
+      navigate("/login");
+    }
   };
 
   return (
@@ -38,6 +45,10 @@ function Register() {
                   type="text"
                   onChange={(e) => setUserName(e.target.value)}
                 />
+              </section>
+              <section>
+                <label htmlFor="email">Email: </label>
+                <input type="text" onChange={(e) => setEmail(e.target.value)} />
               </section>
               <section>
                 <label htmlFor="password">Password: </label>
