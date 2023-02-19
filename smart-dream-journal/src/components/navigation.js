@@ -3,9 +3,10 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 
 function Navigation() {
-  const { token, setToken } = useAuth();
+  const { tokenHeader } = useAuth();
 
-  if (!token) {
+  if (!tokenHeader) {
+    // display public routes navbar
     return (
       <div className="navigation">
         <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -32,6 +33,7 @@ function Navigation() {
       </div>
     );
   }
+  // display profile routes navbar
   return (
     <div className="navigation">
       <nav className="navbar navbar-expand navbar-dark bg-dark">
