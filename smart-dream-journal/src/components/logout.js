@@ -11,7 +11,7 @@ function Logout() {
     e.preventDefault();
     sessionStorage.removeItem("token");
     setToken(null);
-    if (!token) navigate("/login");
+    navigate("/login");
   };
 
   return (

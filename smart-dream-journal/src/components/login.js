@@ -36,9 +36,10 @@ function Login() {
       username,
       password,
     });
-    setToken(sessionStorage.getItem("token"));
-    console.log(token);
-    if (token) navigate("/profile");
+    setToken((token) => {
+      sessionStorage.getItem("token");
+    });
+    navigate("/profile");
   };
 
   return (
