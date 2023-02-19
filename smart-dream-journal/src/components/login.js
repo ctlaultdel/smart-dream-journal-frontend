@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 
-async function setSessionToken(credentials) {
+async function getAccessToken(credentials) {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/token`, {
     method: "POST",
     headers: {
@@ -22,22 +22,24 @@ async function setSessionToken(credentials) {
 }
 
 function Login() {
+  const navigate = useNavigate();
   // states
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-
   // contexts
-  const { token, setToken } = useAuth();
-  const navigate = useNavigate();
+  const { setCurrentUser } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const accessToken = await setSessionToken({
+    // fetch accessToken
+    const accessToken = await getAccessToken({
       username,
       password,
     });
+    // set the access token in session storage
     sessionStorage.setItem("accessToken", accessToken);
-    setToken(sessionStorage.getItem("accessToken"));
+    // update the current user context which triggers update for token header context
+    setCurrentUser(username);
     navigate("/profile");
   };
 
@@ -54,7 +56,7 @@ function Login() {
                 <label htmlFor="username">Username: </label>
                 <input
                   type="text"
-                  placeholder="username or email"
+                  placeholder="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
