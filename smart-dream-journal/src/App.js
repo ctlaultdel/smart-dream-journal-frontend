@@ -10,6 +10,7 @@ import Entries from "./components/entries/entries";
 import Entry from "./components/entries/entry";
 import Register from "./components/register";
 import Main from "./components/main";
+import Logout from "./components/logout";
 import { AuthProvider } from "./contexts/authContext";
 import { useAuth } from "./contexts/authContext";
 
@@ -37,23 +38,19 @@ function App() {
   }, []);
 
   return (
-    <AuthProvider>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Home />} />
-        <Route path="/profile/analyses" element={<Analyses />} />
-        <Route path="/profile/calendar" element={<Calendar />} />
-        <Route path="/profile/journal" element={<Journal />}>
-          <Route path="" element={<Entries userEntries={userEntries} />} />
-          <Route
-            path=":entryID"
-            element={<Entry userEntries={userEntries} />}
-          />
-        </Route>
-      </Routes>
-    </AuthProvider>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/profile" element={<Home />} />
+      <Route path="/profile/analyses" element={<Analyses />} />
+      <Route path="/profile/calendar" element={<Calendar />} />
+      <Route path="/profile/journal" element={<Journal />}>
+        <Route path="" element={<Entries userEntries={userEntries} />} />
+        <Route path=":entryID" element={<Entry userEntries={userEntries} />} />
+      </Route>
+      <Route path="/logout" element={<Logout />}></Route>
+    </Routes>
   );
 }
 

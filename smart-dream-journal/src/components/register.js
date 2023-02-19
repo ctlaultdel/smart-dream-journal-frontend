@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 
 // Function for API post request
 async function loginUser(credentials) {
@@ -50,6 +51,7 @@ function Register() {
                 <button type="submit">Create New Account</button>
               </section>
             </form>
+            <Outlet />
           </div>
         </div>
       </div>

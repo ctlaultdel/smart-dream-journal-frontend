@@ -27,7 +27,7 @@ function Login() {
   const [password, setPassword] = useState();
 
   // contexts
-  const { token, setToken } = useAuth(sessionStorage.getItem("token"));
+  const { token, setToken } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -37,7 +37,8 @@ function Login() {
       password,
     });
     setToken(sessionStorage.getItem("token"));
-    if (token !== null) navigate("/profile");
+    console.log(token);
+    if (token) navigate("/profile");
   };
 
   return (
@@ -48,7 +49,7 @@ function Login() {
           <div className="col-lg-5">
             <h1>Welcome to Smart Dream Journal!</h1>
             <h2 className="font-weight-light">Please log in</h2>
-            <form onSubmit={handleSubmit}>
+            <form>
               <section>
                 <label htmlFor="username">Username: </label>
                 <input
@@ -66,13 +67,11 @@ function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">Login</button>
+                <button onClick={handleSubmit} type="submit">
+                  Login
+                </button>
               </section>
             </form>
-            <Outlet />
-            <Link to="/register">
-              <button>Register New Account</button>
-            </Link>
           </div>
         </div>
       </div>
