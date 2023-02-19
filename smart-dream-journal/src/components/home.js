@@ -1,33 +1,18 @@
 import React, { useState } from "react";
 import { useAuth } from "../contexts/authContext";
 
-// async function getCurrentUser(opts) {
-//   return fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, opts)
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((data) => {
-//       console.log(data.username);
-//       setUserName(data.username);
-//     })
-//     .catch((error) => console.log(error));
-// }
-
 function Home() {
-  const [username, setUserName] = useState();
-  const { token, setToken } = useAuth();
-  const opts = {
-    headers: { Authorization: "Bearer" + token },
-  };
+  // const [username, setUserName] = useState();
+  const { tokenHeader, currentUser } = useAuth();
+  const userMessage = getUserMessage();
 
-  async function getCurrentUser(opts) {
-    return fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, opts)
+  async function getUserMessage() {
+    return await fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, {
+      method: "POST",
+      headers: tokenHeader,
+    })
       .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data.username);
-        setUserName(data.username);
+        return response;
       })
       .catch((error) => console.log(error));
   }
@@ -44,13 +29,8 @@ function Home() {
             />
           </div>
           <div className="col-lg-5">
-            <h1 className="font-weight-light">{`Hello ${username}`}</h1>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
-            </p>
+            <h1 className="font-weight-light">{`Hello ${currentUser}`}</h1>
+            <p>Welcome to your home profile page</p>
           </div>
         </div>
       </div>
