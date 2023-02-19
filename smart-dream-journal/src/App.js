@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Login from "./components/login";
 import Home from "./components/home";
@@ -11,8 +11,6 @@ import Entry from "./components/entries/entry";
 import Register from "./components/register";
 import Main from "./components/main";
 import Logout from "./components/logout";
-import { AuthProvider } from "./contexts/authContext";
-import { useAuth } from "./contexts/authContext";
 
 // Helper functions for making API calls
 const getUserEntries = async () => {

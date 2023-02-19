@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 
 async function setSessionToken(credentials) {
@@ -16,7 +16,7 @@ async function setSessionToken(credentials) {
       }
     })
     .then((data) => {
-      sessionStorage.setItem("token", data.access_token);
+      return data.access_token;
     })
     .catch((error) => console.log(error));
 }
@@ -32,13 +32,12 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSessionToken({
+    const accessToken = await setSessionToken({
       username,
       password,
     });
-    setToken((token) => {
-      sessionStorage.getItem("token");
-    });
+    sessionStorage.setItem("accessToken", accessToken);
+    setToken(sessionStorage.getItem("accessToken"));
     navigate("/profile");
   };
 
@@ -50,7 +49,7 @@ function Login() {
           <div className="col-lg-5">
             <h1>Welcome to Smart Dream Journal!</h1>
             <h2 className="font-weight-light">Please log in</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <section>
                 <label htmlFor="username">Username: </label>
                 <input
@@ -68,9 +67,7 @@ function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <button onClick={handleSubmit} type="submit">
-                  Login
-                </button>
+                <button type="submit">Login</button>
               </section>
             </form>
           </div>

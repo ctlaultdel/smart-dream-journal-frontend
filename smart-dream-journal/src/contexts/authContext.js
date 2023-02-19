@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
 
   // persist context on refresh with useEffect
   useEffect(() => {
-    setToken(sessionStorage.getItem("token"));
+    setToken(sessionStorage.getItem("accessToken"));
   }, [token]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

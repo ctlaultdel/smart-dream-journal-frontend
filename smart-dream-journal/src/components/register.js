@@ -22,7 +22,6 @@ function Register() {
       username,
       password,
     });
-    console.log(response);
   };
 
   return (

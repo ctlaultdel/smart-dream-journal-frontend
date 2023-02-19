@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 
 function Logout() {
@@ -9,7 +8,7 @@ function Logout() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("accessToken");
     setToken(null);
     navigate("/login");
   };
