@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { useAuth } from "../contexts/authContext";
+
+async function getCurrentUser(opts) {
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, opts)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data.username;
+    })
+    .catch((error) => console.log(error));
+}
 
 function Home() {
+  const { token, setToken } = useAuth();
+  const opts = {
+    headers: { Authorization: "Bearer" + token },
+  };
+  const user = getCurrentUser(opts);
+
   return (
     <div className="home">
       <div className="container">
@@ -13,7 +31,7 @@ function Home() {
             />
           </div>
           <div className="col-lg-5">
-            <h1 className="font-weight-light">Home</h1>
+            <h1 className="font-weight-light">{`Hello ${user}`}</h1>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
