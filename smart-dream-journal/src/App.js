@@ -29,11 +29,11 @@ function App() {
   const [userEntries, setUserEntries] = useState([]);
 
   // Functions for updating states
-  useEffect(() => {
-    getUserEntries().then((entries) => {
-      setUserEntries(entries);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getUserEntries().then((entries) => {
+  //     setUserEntries(entries);
+  //   });
+  // }, []);
 
   return (
     <Routes>
