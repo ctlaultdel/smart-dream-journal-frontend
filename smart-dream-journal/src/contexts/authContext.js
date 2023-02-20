@@ -1,21 +1,35 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext({
-  token: null,
-  setToken: () => {},
+  tokenHeader: null,
+  currentUser: null,
+  setTokenHeader: () => {},
+  setCurrentUser: () => {},
 });
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
+  const [tokenHeader, setTokenHeader] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
   const value = {
-    token,
-    setToken,
+    tokenHeader,
+    setTokenHeader,
+    currentUser,
+    setCurrentUser,
   };
 
-  // persist context on refresh with useEffect
+  // persist context on refresh with useEffect triggered whenever token changes
   useEffect(() => {
-    setToken(sessionStorage.getItem("accessToken"));
-  }, [token]);
+    // check for access token in session storage
+    if (sessionStorage.accessToken) {
+      // set token header for protected routes access
+      setTokenHeader({
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      });
+    } else {
+      // set token header as null
+      setTokenHeader(null);
+    }
+  }, [currentUser]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
