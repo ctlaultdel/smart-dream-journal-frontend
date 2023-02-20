@@ -2,22 +2,22 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext({
   tokenHeader: null,
-  currentUser: null,
+  currentUserName: null,
   setTokenHeader: () => {},
-  setCurrentUser: () => {},
+  setCurrentUserName: () => {},
 });
 
 export const AuthProvider = ({ children }) => {
   const [tokenHeader, setTokenHeader] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUserName, setCurrentUserName] = useState(null);
   const value = {
     tokenHeader,
     setTokenHeader,
-    currentUser,
-    setCurrentUser,
+    currentUserName,
+    setCurrentUserName,
   };
 
-  // persist context on refresh with useEffect triggered whenever current User changes
+  // persist tokenheader context on refresh
   useEffect(() => {
     const localToken = window.localStorage.accessToken;
     // check for access token in session storage
@@ -30,7 +30,13 @@ export const AuthProvider = ({ children }) => {
       // set token header as null
       setTokenHeader(null);
     }
-  }, [currentUser]);
+  }, [currentUserName]);
+
+  // persist currentUserName context on refresh
+  useEffect(() => {
+    // allow user to refresh without losing entry data
+    window.localStorage.setItem("USER_NAME", JSON.stringify(currentUserName));
+  }, [currentUserName]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

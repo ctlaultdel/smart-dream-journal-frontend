@@ -13,11 +13,7 @@ import Main from "./components/main";
 import Logout from "./components/logout";
 import { useAuth } from "./contexts/authContext";
 
-// THINGS TO THINK ABOUT
-// whatever needs to not change on refresh --> add to window.localStorage
-/////// username, userdata, accesstoken
-// whatever we want available accross all components --> add context
-////// headerToken (needs to be updated whenever username changes (login/logout))
+/// Entries still not working upon refresh but close - login functionality seems better
 
 function App() {
   // contexts
@@ -25,8 +21,10 @@ function App() {
   // App states
   const [userEntries, setUserEntries] = useState([]);
 
+  // function to fetch user entry data when token header is updated - user logs in/out
   useEffect(() => {
-    if (localStorage.accessToken) {
+    // check if access token --> fetch user entry data
+    if (window.localStorage.accessToken) {
       fetch(`${process.env.REACT_APP_BACKEND_URL}/profile/journal/entries`, {
         method: "POST",
         headers: {
@@ -40,8 +38,16 @@ function App() {
         .then((data) => {
           setUserEntries(data);
         });
+    } else {
+      // set user entry data to []
+      setUserEntries([]);
     }
-  }, [userEntries, tokenHeader]);
+  }, [tokenHeader]);
+
+  useEffect(() => {
+    // allow user to refresh without losing entry data
+    window.localStorage.setItem("USER_ENTRIES", JSON.stringify(userEntries));
+  }, [userEntries]);
 
   return (
     <Routes>

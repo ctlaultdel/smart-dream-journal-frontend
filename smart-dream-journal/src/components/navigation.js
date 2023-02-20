@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/authContext";
 function Navigation() {
   const { tokenHeader } = useAuth();
 
-  if (!tokenHeader) {
+  if (!window.sessionStorage.accessToken) {
     // display public routes navbar
     return (
       <div className="navigation">

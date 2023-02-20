@@ -21,13 +21,19 @@ async function getAccessToken(credentials) {
     .catch((error) => console.log(error));
 }
 
+// THINGS TO THINK ABOUT
+// whatever needs to not change on refresh --> add to window.localStorage
+/////// username, userdata, accesstoken
+// whatever we want available accross all components --> add context
+////// headerToken (needs to be updated whenever username changes (login/logout))
+
 function Login() {
   const navigate = useNavigate();
   // states
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   // contexts
-  const { currentUser, setCurrentUser } = useAuth();
+  const { setCurrentUserName } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +45,7 @@ function Login() {
     // set the access token in session storage
     window.localStorage.setItem("accessToken", accessToken);
     // update the current user context which triggers update for token header context
-    setCurrentUser(username);
+    setCurrentUserName(username);
     if (window.localStorage.accessToken) {
       navigate("/profile");
     }

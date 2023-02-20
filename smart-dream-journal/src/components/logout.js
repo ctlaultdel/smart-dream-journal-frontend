@@ -3,13 +3,13 @@ import { useAuth } from "../contexts/authContext";
 
 function Logout() {
   // contexts
-  const { setCurrentUser } = useAuth();
+  const { setCurrentUserName } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     window.localStorage.removeItem("accessToken");
-    setCurrentUser(null);
+    setCurrentUserName(null);
     if (!window.localStorage.accessToken) {
       navigate("/login");
     }
