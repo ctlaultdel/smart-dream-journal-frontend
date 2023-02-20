@@ -11,29 +11,50 @@ import Entry from "./components/entries/entry";
 import Register from "./components/register";
 import Main from "./components/main";
 import Logout from "./components/logout";
+import { useAuth } from "./contexts/authContext";
 
-// Helper functions for making API calls
-const getUserEntries = async () => {
-  return axios
-    .get(`${process.env.REACT_APP_BACKEND_URL}/profile/journal`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      console.error(error.response.data.message);
-    });
-};
+// // Helper functions for making API calls
+// const getUserEntries = async () => {
+//   return axios
+//     .get(`${process.env.REACT_APP_BACKEND_URL}/profile/journal`)
+//     .then((response) => {
+//       return response.data;
+//     })
+//     .catch((error) => {
+//       console.error(error.response.data.message);
+//     });
+// };
 
 function App() {
   // App states
   const [userEntries, setUserEntries] = useState([]);
 
-  // Functions for updating states
-  // useEffect(() => {
-  //   getUserEntries().then((entries) => {
-  //     setUserEntries(entries);
-  //   });
-  // }, []);
+  // contexts
+  // const { tokenHeader } = useAuth();
+
+  // const getUserEntries = async () => {
+  //   return await fetch(
+  //     `${process.env.REACT_APP_BACKEND_URL}/profile/journal/entries`,
+  //     {
+  //       method: "POST",
+  //       header: tokenHeader,
+  //     }
+  //   )
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       return response.data;
+  //     })
+  //     .catch((error) => {
+  //       console.error(error.response.data.message);
+  //     });
+  // };
+
+  // if (tokenHeader) {
+  //   const entries = getUserEntries();
+  //   setUserEntries(entries);
+  // }
+
+  // getUserEntries();
 
   return (
     <Routes>

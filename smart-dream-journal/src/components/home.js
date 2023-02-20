@@ -4,18 +4,18 @@ import { useAuth } from "../contexts/authContext";
 function Home() {
   // const [username, setUserName] = useState();
   const { tokenHeader, currentUser } = useAuth();
-  const userMessage = getUserMessage();
+  // const userMessage = getUserMessage();
 
-  async function getUserMessage() {
-    return await fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, {
-      method: "POST",
-      headers: tokenHeader,
-    })
-      .then((response) => {
-        return response;
-      })
-      .catch((error) => console.log(error));
-  }
+  // async function getUserMessage() {
+  //   return await fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, {
+  //     method: "POST",
+  //     headers: tokenHeader,
+  //   })
+  //     .then((response) => {
+  //       return response;
+  //     })
+  //     .catch((error) => console.log(error));
+  // }
 
   return (
     <div className="home">
