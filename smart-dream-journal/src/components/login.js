@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 
-async function setSessionToken(credentials) {
+async function getAccessToken(credentials) {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/token`, {
     method: "POST",
     headers: {
@@ -26,13 +26,13 @@ function Login() {
   // states
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-
   // contexts
   const { currentUser, setCurrentUser } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const accessToken = await setSessionToken({
+    // fetch accessToken
+    const accessToken = await getAccessToken({
       username,
       password,
     });
@@ -59,7 +59,7 @@ function Login() {
                 <label htmlFor="username">Username: </label>
                 <input
                   type="text"
-                  placeholder="username or email"
+                  placeholder="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />

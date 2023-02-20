@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
     setCurrentUser,
   };
 
+<<<<<<< HEAD
   // persist context on refresh with useEffect triggered whenever current User changes
   useEffect(() => {
     // check for access token in session storage
@@ -24,6 +25,15 @@ export const AuthProvider = ({ children }) => {
       // set token header for protected routes access
       setTokenHeader({
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+=======
+  // persist context on refresh with useEffect triggered whenever token changes
+  useEffect(() => {
+    // check for access token in session storage
+    if (sessionStorage.accessToken) {
+      // set token header for protected routes access
+      setTokenHeader({
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+>>>>>>> 4398a5434588aec27ab9b263226c33d5ba36a43f
       });
     } else {
       // set token header as null

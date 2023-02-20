@@ -24,6 +24,17 @@ import { useAuth } from "./contexts/authContext";
 //       console.error(error.response.data.message);
 //     });
 // };
+// // Helper functions for making API calls
+// const getUserEntries = async () => {
+//   return axios
+//     .get(`${process.env.REACT_APP_BACKEND_URL}/profile/journal`)
+//     .then((response) => {
+//       return response.data;
+//     })
+//     .catch((error) => {
+//       console.error(error.response.data.message);
+//     });
+// };
 
 function App() {
   // contexts
