@@ -33,7 +33,7 @@ function Login() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   // contexts
-  const { setAccessToken, setTokenHeader } = useAuth();
+  const { setCurrentUserName, setAccessToken, setTokenHeader } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,6 +43,7 @@ function Login() {
       password,
     });
     // store access token, token header, and user name contexts
+    setCurrentUserName(username);
     setAccessToken(accessToken);
     setTokenHeader({ Authorization: `Bearer ${accessToken}` });
     if (accessToken) {
@@ -64,7 +65,6 @@ function Login() {
                 <input
                   type="text"
                   placeholder="username"
-                  value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </section>
@@ -73,7 +73,6 @@ function Login() {
                 <input
                   type="password"
                   placeholder="password"
-                  value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit">Login</button>

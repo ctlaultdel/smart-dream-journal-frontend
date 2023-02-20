@@ -17,12 +17,7 @@ import { useAuth } from "./contexts/authContext";
 
 function App() {
   // contexts
-  const {
-    accessToken,
-    tokenHeader,
-    currentUserEntries,
-    setCurrentUserEntries,
-  } = useAuth();
+  const { tokenHeader, currentUserEntries, setCurrentUserEntries } = useAuth();
   // App states
   // const [userEntries, setUserEntries] = useState([]);
 

@@ -13,6 +13,7 @@ export const AuthContext = createContext({
 export const AuthProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null);
   const [tokenHeader, setTokenHeader] = useState(null);
+  const [currentUserName, setCurrentUserName] = useState(null);
   const [currentUserEntries, setCurrentUserEntries] = useState(null);
 
   // renders when browser refreshes and when currentUserEntries is modified
@@ -21,29 +22,32 @@ export const AuthProvider = ({ children }) => {
       "USER_ENTRIES",
       JSON.stringify({ currentUserEntries })
     );
-    localStorage.setItem("ACCESSTOKEN", JSON.stringify({ accessToken }));
-    localStorage.setItem("TOKENHEADER", JSON.stringify({ tokenHeader }));
+    localStorage.getItem("ACCESSTOKEN", JSON.stringify({ accessToken }));
+    localStorage.getItem("TOKENHEADER", JSON.stringify({ tokenHeader }));
+    localStorage.getItem("USERNAME", JSON.stringify({ currentUserName }));
   });
 
   // function to add new user entry to currentUserEntries context
-  const addEntry = (entry) =>
-    setCurrentUserEntries((prev) => ({ ...prev, entry }));
+  // const addEntry = (entry) =>
+  //   setCurrentUserEntries((prev) => ({ ...prev, entry }));
 
-  // function to delete new user entry from currentUserEntries context
-  const deleteEntry = (entryID) =>
-    setCurrentUserEntries((prev) => ({
-      ...prev.filter((e) => e.id !== entryID),
-    }));
+  // // function to delete new user entry from currentUserEntries context
+  // const deleteEntry = (entryID) =>
+  //   setCurrentUserEntries((prev) => ({
+  //     ...prev.filter((e) => e.id !== entryID),
+  //   }));
 
   const value = {
     accessToken,
     setAccessToken,
     tokenHeader,
     setTokenHeader,
+    currentUserName,
+    setCurrentUserName,
     currentUserEntries,
     setCurrentUserEntries,
-    addEntry,
-    deleteEntry,
+    // addEntry,
+    // deleteEntry,
   };
 
   // persist tokenheader context on refresh

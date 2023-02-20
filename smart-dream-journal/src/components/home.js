@@ -3,7 +3,7 @@ import { useAuth } from "../contexts/authContext";
 
 function Home() {
   // const [username, setUserName] = useState();
-  const { accessToken } = useAuth();
+  const { currentUserName } = useAuth();
   // const userMessage = getUserMessage();
 
   // async function getUserMessage() {
@@ -29,7 +29,7 @@ function Home() {
             />
           </div>
           <div className="col-lg-5">
-            <h1 className="font-weight-light">{`Hello ${accessToken}`}</h1>
+            <h1 className="font-weight-light">{`Hello ${currentUserName}`}</h1>
             <p>Welcome to your home profile page</p>
           </div>
         </div>
