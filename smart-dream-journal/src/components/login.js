@@ -22,13 +22,13 @@ async function setSessionToken(credentials) {
 }
 
 function Login() {
+  const navigate = useNavigate();
   // states
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
   // contexts
-  const { token, setToken } = useAuth();
-  const navigate = useNavigate();
+  const { currentUser, setCurrentUser } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,9 +36,14 @@ function Login() {
       username,
       password,
     });
-    sessionStorage.setItem("accessToken", accessToken);
-    setToken(sessionStorage.getItem("accessToken"));
-    navigate("/profile");
+    // set the access token in session storage
+    localStorage.setItem("accessToken", accessToken);
+    // update the current user context which triggers update for token header context
+    setCurrentUser(username);
+    console.log(currentUser);
+    if (localStorage.accessToken) {
+      navigate("/profile");
+    }
   };
 
   return (
