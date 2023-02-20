@@ -33,7 +33,7 @@ function Login() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   // contexts
-  const { setCurrentUserName } = useAuth();
+  const { setAccessToken, setTokenHeader, setCurrentUserName } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,11 +42,12 @@ function Login() {
       username,
       password,
     });
-    // set the access token in session storage
-    window.localStorage.setItem("accessToken", accessToken);
-    // update the current user context which triggers update for token header context
+    // store access token, token header, and user name contexts
+    console.log(accessToken);
+    setAccessToken(accessToken);
+    setTokenHeader({ Authorization: `Bearer ${accessToken}` });
     setCurrentUserName(username);
-    if (window.localStorage.accessToken) {
+    if (accessToken) {
       navigate("/profile");
     }
   };

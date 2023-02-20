@@ -17,14 +17,19 @@ import { useAuth } from "./contexts/authContext";
 
 function App() {
   // contexts
-  const { tokenHeader } = useAuth();
+  const {
+    accessToken,
+    tokenHeader,
+    currentUserEntries,
+    setCurrentUserEntries,
+  } = useAuth();
   // App states
-  const [userEntries, setUserEntries] = useState([]);
+  // const [userEntries, setUserEntries] = useState([]);
 
   // function to fetch user entry data when token header is updated - user logs in/out
   useEffect(() => {
     // check if access token --> fetch user entry data
-    if (window.localStorage.accessToken) {
+    if (tokenHeader) {
       fetch(`${process.env.REACT_APP_BACKEND_URL}/profile/journal/entries`, {
         method: "POST",
         headers: {
@@ -36,18 +41,19 @@ function App() {
           return response.json();
         })
         .then((data) => {
-          setUserEntries(data);
+          setCurrentUserEntries(data);
         });
-    } else {
-      // set user entry data to []
-      setUserEntries([]);
     }
-  }, [tokenHeader]);
+    // } else {
+    //   // set user entry data to []
+    //   setCurrentUserEntries([]);
+    // }
+  }, [setCurrentUserEntries, tokenHeader]);
 
-  useEffect(() => {
-    // allow user to refresh without losing entry data
-    window.localStorage.setItem("USER_ENTRIES", JSON.stringify(userEntries));
-  }, [userEntries]);
+  // useEffect(() => {
+  //   // allow user to refresh without losing entry data
+  //   window.localStorage.setItem("USER_ENTRIES", JSON.stringify(userEntries));
+  // }, [userEntries]);
 
   return (
     <Routes>
@@ -58,8 +64,11 @@ function App() {
       <Route path="/profile/analyses" element={<Analyses />} />
       <Route path="/profile/calendar" element={<Calendar />} />
       <Route path="/profile/journal" element={<Journal />}>
-        <Route path="" element={<Entries userEntries={userEntries} />} />
-        <Route path=":entryID" element={<Entry userEntries={userEntries} />} />
+        <Route path="" element={<Entries userEntries={currentUserEntries} />} />
+        <Route
+          path=":entryID"
+          element={<Entry userEntries={currentUserEntries} />}
+        />
       </Route>
       <Route path="/logout" element={<Logout />}></Route>
     </Routes>

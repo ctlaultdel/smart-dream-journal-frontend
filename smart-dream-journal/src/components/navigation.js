@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 
 function Navigation() {
-  const { tokenHeader } = useAuth();
+  const { accessToken } = useAuth();
 
-  if (!window.localStorage.accessToken) {
+  if (!accessToken) {
     // display public routes navbar
     return (
       <div className="navigation">
