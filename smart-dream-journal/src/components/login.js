@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 
@@ -33,7 +33,7 @@ function Login() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   // contexts
-  const { setCurrentUserName } = useAuth();
+  const { currentUserName, setCurrentUserName } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,11 +45,17 @@ function Login() {
     // set the access token in session storage
     window.localStorage.setItem("accessToken", accessToken);
     // update the current user context which triggers update for token header context
-    setCurrentUserName(username);
-    if (window.localStorage.accessToken) {
+    // setCurrentUserName(username);
+    window.localStorage.setItem("USER_NAME", JSON.stringify(username));
+    if (currentUserName) {
       navigate("/profile");
     }
   };
+
+  useEffect(() => {
+    const name = window.localStorage.getItem("USER_NAME");
+    setCurrentUserName(name);
+  });
 
   return (
     <div className="login">

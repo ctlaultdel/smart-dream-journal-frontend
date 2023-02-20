@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 
 function Navigation() {
-  const { tokenHeader } = useAuth();
+  const { currentUserName, setCurrentUserName } = useAuth();
 
-  if (!window.sessionStorage.accessToken) {
+  useEffect(() => {
+    const name = window.localStorage.getItem("USER_NAME");
+    setCurrentUserName(name);
+  });
+
+  if (!currentUserName) {
     // display public routes navbar
     return (
       <div className="navigation">

@@ -45,6 +45,11 @@ function App() {
   }, [tokenHeader]);
 
   useEffect(() => {
+    const data = window.localStorage.getItem("USER_ENTRIES");
+    setUserEntries(data);
+  }, []);
+
+  useEffect(() => {
     // allow user to refresh without losing entry data
     window.localStorage.setItem("USER_ENTRIES", JSON.stringify(userEntries));
   }, [userEntries]);
