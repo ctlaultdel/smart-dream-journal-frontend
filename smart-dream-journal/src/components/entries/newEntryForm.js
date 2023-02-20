@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+// import EmojiPicker from "emoji-picker-react";
+import InputEmoji from "react-input-emoji";
 
 function NewEntryPopup(props) {
+  function handleOnEnter(text) {
+    console.log("enter", text);
+  }
+
   if (props.trigger) {
     return (
       <form onSubmit={props.handleSubmit}>
@@ -37,11 +43,13 @@ function NewEntryPopup(props) {
           />
         </section>
         <section>
-          <label htmlFor="mood" />
-          <input
-            type="text"
-            placeholder="mood"
-            onChange={(e) => props.setMood(e.target.value)}
+          <label htmlFor="testMood">Dream Mood</label>
+          <InputEmoji
+            value={props.mood}
+            onChange={props.setMood}
+            cleanOnEnter
+            onEnter={handleOnEnter}
+            placeholder="Dream Mood Emoji"
           />
         </section>
         <section>
