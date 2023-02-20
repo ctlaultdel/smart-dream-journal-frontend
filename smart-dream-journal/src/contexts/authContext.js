@@ -13,16 +13,17 @@ export const AuthContext = createContext({
 export const AuthProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null);
   const [tokenHeader, setTokenHeader] = useState(null);
-  const [currentUserName, setCurrentUserName] = useState(null);
   const [currentUserEntries, setCurrentUserEntries] = useState(null);
 
   // renders when browser refreshes and when currentUserEntries is modified
   useEffect(() => {
-    localStorage.setItem("USER_ENTRIES", JSON.stringify(currentUserEntries));
-    localStorage.setItem("USERNAME", JSON.stringify(currentUserName));
-    localStorage.setItem("ACCESSTOKEN", JSON.stringify(accessToken));
-    localStorage.setItem("TOKENHEADER", JSON.stringify(tokenHeader));
-  }, [currentUserEntries, currentUserName, accessToken, tokenHeader]);
+    localStorage.setItem(
+      "USER_ENTRIES",
+      JSON.stringify({ currentUserEntries })
+    );
+    localStorage.setItem("ACCESSTOKEN", JSON.stringify({ accessToken }));
+    localStorage.setItem("TOKENHEADER", JSON.stringify({ tokenHeader }));
+  });
 
   // function to add new user entry to currentUserEntries context
   const addEntry = (entry) =>
@@ -39,8 +40,6 @@ export const AuthProvider = ({ children }) => {
     setAccessToken,
     tokenHeader,
     setTokenHeader,
-    currentUserName,
-    setCurrentUserName,
     currentUserEntries,
     setCurrentUserEntries,
     addEntry,

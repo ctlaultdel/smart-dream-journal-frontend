@@ -33,7 +33,7 @@ function Login() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   // contexts
-  const { setAccessToken, setTokenHeader, setCurrentUserName } = useAuth();
+  const { setAccessToken, setTokenHeader } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,10 +43,8 @@ function Login() {
       password,
     });
     // store access token, token header, and user name contexts
-    console.log(accessToken);
     setAccessToken(accessToken);
     setTokenHeader({ Authorization: `Bearer ${accessToken}` });
-    setCurrentUserName(username);
     if (accessToken) {
       navigate("/profile");
     }
