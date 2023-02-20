@@ -8,17 +8,11 @@ function Logout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    localStorage.removeItem("accessToken");
+    window.localStorage.removeItem("accessToken");
     setCurrentUser(null);
-    if (!localStorage.accessToken) {
+    if (!window.localStorage.accessToken) {
       navigate("/login");
     }
-=======
-    sessionStorage.removeItem("accessToken");
-    setCurrentUser(null);
-    navigate("/login");
->>>>>>> 4398a5434588aec27ab9b263226c33d5ba36a43f
   };
 
   return (

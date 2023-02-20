@@ -13,28 +13,11 @@ import Main from "./components/main";
 import Logout from "./components/logout";
 import { useAuth } from "./contexts/authContext";
 
-// // Helper functions for making API calls
-// const getUserEntries = async () => {
-//   return axios
-//     .get(`${process.env.REACT_APP_BACKEND_URL}/profile/journal`)
-//     .then((response) => {
-//       return response.data;
-//     })
-//     .catch((error) => {
-//       console.error(error.response.data.message);
-//     });
-// };
-// // Helper functions for making API calls
-// const getUserEntries = async () => {
-//   return axios
-//     .get(`${process.env.REACT_APP_BACKEND_URL}/profile/journal`)
-//     .then((response) => {
-//       return response.data;
-//     })
-//     .catch((error) => {
-//       console.error(error.response.data.message);
-//     });
-// };
+// THINGS TO THINK ABOUT
+// whatever needs to not change on refresh --> add to window.localStorage
+/////// username, userdata, accesstoken
+// whatever we want available accross all components --> add context
+////// headerToken (needs to be updated whenever username changes (login/logout))
 
 function App() {
   // contexts

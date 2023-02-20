@@ -37,11 +37,10 @@ function Login() {
       password,
     });
     // set the access token in session storage
-    localStorage.setItem("accessToken", accessToken);
+    window.localStorage.setItem("accessToken", accessToken);
     // update the current user context which triggers update for token header context
     setCurrentUser(username);
-    console.log(currentUser);
-    if (localStorage.accessToken) {
+    if (window.localStorage.accessToken) {
       navigate("/profile");
     }
   };
