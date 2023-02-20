@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 
 function Navigation() {
-  const { currentUserName, setCurrentUserName } = useAuth();
+  const { currentUserName } = useAuth();
 
-  useEffect(() => {
-    const name = window.localStorage.getItem("USER_NAME");
-    setCurrentUserName(name);
-  });
+  // useEffect(() => {
+  //   const name = window.localStorage.getItem("USER_NAME");
+  //   setCurrentUserName(name);
+  // });
 
   if (!currentUserName) {
     // display public routes navbar

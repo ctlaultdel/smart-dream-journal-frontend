@@ -52,10 +52,10 @@ function Login() {
     }
   };
 
-  useEffect(() => {
-    const name = window.localStorage.getItem("USER_NAME");
-    setCurrentUserName(name);
-  });
+  // useEffect(() => {
+  //   const name = window.localStorage.getItem("USER_NAME");
+  //   setCurrentUserName(name);
+  // });
 
   return (
     <div className="login">

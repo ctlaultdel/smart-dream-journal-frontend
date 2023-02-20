@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 function Logout() {
   // contexts
-  const { setCurrentUserName } = useAuth();
+  // const { setCurrentUserName } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -17,10 +17,10 @@ function Logout() {
     }
   };
 
-  useEffect(() => {
-    const name = window.localStorage.getItem("USER_NAME");
-    setCurrentUserName(name);
-  }, [setCurrentUserName]);
+  // useEffect(() => {
+  //   const name = window.localStorage.getItem("USER_NAME");
+  //   setCurrentUserName(name);
+  // }, [setCurrentUserName]);
 
   return (
     <div className="login">

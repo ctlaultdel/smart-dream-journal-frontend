@@ -31,14 +31,10 @@ export const AuthProvider = ({ children }) => {
         Authorization: `Bearer ${window.localStorage.getItem("accessToken")}`,
       });
     }
-    // if (tokenData && !currentUser) {
-    //   setCurrentUser(tokenData);
-    //   // must parse the previously stringified role & username to grab values accurately
-    //   setRole(JSON.parse(roleData));
-    //   setUsername(JSON.parse(usernameData));
-    // }
+    setCurrentUserName(window.localStorage.getItem("USER_NAME"));
+    // const data = window.localStorage.getItem("USER_ENTRIES");
+    // setUserEntries(data);
   }, [currentUserName]);
-
   // persist tokenheader context on refresh
   // useEffect(() => {
   //   const  = window.localStorage.accessToken;
