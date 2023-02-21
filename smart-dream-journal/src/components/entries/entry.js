@@ -1,13 +1,13 @@
 import { useParams, useNavigate } from "react-router";
 import { useAuth } from "../../contexts/authContext";
 
-function Entry(props) {
+function Entry({ userEntries }) {
   const navigate = useNavigate();
   // contexts
   const { tokenHeader } = useAuth();
   const { entryID } = useParams();
 
-  const selectedEntry = props.userEntries.filter(
+  const selectedEntry = userEntries.filter(
     (entry) => entry.id === parseInt(entryID)
   )[0];
 

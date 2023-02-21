@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 // Function for API post request for user registration
 async function registerUser(credentials) {

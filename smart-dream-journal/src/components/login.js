@@ -21,12 +21,6 @@ async function getAccessToken(credentials) {
     .catch((error) => console.log(error));
 }
 
-// THINGS TO THINK ABOUT
-// whatever needs to not change on refresh --> add to window.localStorage
-/////// username, userdata, accesstoken
-// whatever we want available accross all components --> add context
-////// headerToken (needs to be updated whenever username changes (login/logout))
-
 function Login() {
   const navigate = useNavigate();
   // states
@@ -43,6 +37,12 @@ function Login() {
       password,
     });
     // store access token, token header, and user name contexts
+    localStorage.setItem("ACCESSTOKEN", accessToken);
+    localStorage.setItem(
+      "TOKENHEADER",
+      JSON.stringify({ Authorization: `Bearer ${accessToken}` })
+    );
+    localStorage.setItem("USERNAME", username);
     setCurrentUserName(username);
     setAccessToken(accessToken);
     setTokenHeader({ Authorization: `Bearer ${accessToken}` });
