@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import NewEntryPopup from "./newEntryForm";
+import { useParams, useNavigate } from "react-router";
 
 function Journal() {
   // contexts
-  const { tokenHeader } = useAuth();
+  const { tokenHeader, setUserEntries, userEntries } = useAuth();
   // journal form entry states
   const [date, setDate] = useState(Date.now());
   const [title, setTitle] = useState("");
@@ -13,6 +14,7 @@ function Journal() {
   const [description, setDescription] = useState("");
   const [mood, setMood] = useState("");
   const [trigger, setTrigger] = useState(false);
+  const navigate = useNavigate();
 
   // Function for API post request for new entry
   async function postNewEntry(entryStates) {
@@ -25,7 +27,7 @@ function Journal() {
       body: JSON.stringify(entryStates),
     })
       .then((response) => {
-        return response.status;
+        return response.json();
       })
       .catch((error) => console.log(error));
   }
@@ -33,19 +35,26 @@ function Journal() {
   // event handler for new journal entry form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await postNewEntry({
+    const newEntry = await postNewEntry({
       title,
       keywords,
       description,
       mood,
       date,
     });
-    console.log(response);
-    if (response === 201) {
-      console.log("success");
-      setTrigger(false);
-    }
+    // update the local storage USERENTRIES to add new journal entry
+    const entries = { ...userEntries, ...newEntry };
+    localStorage.setItem("USERENTRIES", JSON.stringify(entries));
+    setUserEntries(JSON.parse(localStorage.getItem("USERENTRIES")));
+    setTrigger(false);
   };
+  //  // remove the removed entry from userEntries local storage
+  //  const entries = userEntries.filter(
+  //   (entry) => entry.id !== parseInt(entryID)
+  // );
+  // localStorage.setItem("USERENTRIES", JSON.stringify(entries));
+  // setUserEntries(JSON.parse(localStorage.getItem("USERENTRIES")));
+  // navigate("/journal");
 
   return (
     <div className="home">

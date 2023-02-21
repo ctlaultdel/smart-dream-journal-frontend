@@ -15,10 +15,10 @@ import { useAuth } from "./contexts/authContext";
 
 function App() {
   // contexts
-  const { tokenHeader } = useAuth();
+  const { tokenHeader, userEntries, setUserEntries } = useAuth();
 
   // states
-  const [userEntries, setUserEntries] = useState([]);
+  // const [userEntries, setUserEntries] = useState([]);
 
   // fetch user Entries data from API
   useEffect(() => {
@@ -37,27 +37,22 @@ function App() {
         })
         .then((data) => {
           setUserEntries(data);
+          localStorage.setItem("USERENTRIES", JSON.stringify(data));
         });
     }
-  }, [tokenHeader, userEntries]);
+  }, [tokenHeader, setUserEntries]);
 
   return (
     <Routes>
       <Route path="/" element={<Main />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/profile" element={<Home userEntries={userEntries} />} />
-      <Route
-        path="/profile/analyses"
-        element={<Analyses userEntries={userEntries} />}
-      />
-      <Route
-        path="/profile/calendar"
-        element={<DisplayCalendar userEntries={userEntries} />}
-      />
+      <Route path="/profile" element={<Home />} />
+      <Route path="/profile/analyses" element={<Analyses />} />
+      <Route path="/profile/calendar" element={<DisplayCalendar />} />
       <Route path="/profile/journal" element={<Journal />}>
-        <Route path="" element={<Entries userEntries={userEntries} />} />
-        <Route path=":entryID" element={<Entry userEntries={userEntries} />} />
+        <Route path="" element={<Entries />} />
+        <Route path=":entryID" element={<Entry />} />
       </Route>
       <Route path="/logout" element={<Logout />}></Route>
     </Routes>

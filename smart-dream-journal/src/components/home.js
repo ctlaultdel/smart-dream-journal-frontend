@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "../contexts/authContext";
 
-function Home({ userEntries }) {
+function Home() {
   const { currentUserName } = useAuth();
 
   return (
