@@ -17,7 +17,7 @@ function Entry() {
 
   async function deleteEntry(entryID) {
     return await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/profile/journal/${entryID}`,
+      `https://git.heroku.com/smart-dream-journal-frontend.git/profile/journal/${entryID}`,
       {
         method: "POST",
         headers: {

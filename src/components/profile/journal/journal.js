@@ -19,14 +19,17 @@ function Journal() {
 
   // Function for API post request for new entry
   async function postNewEntry(entryStates) {
-    return await fetch(`${process.env.REACT_APP_BACKEND_URL}/profile/journal`, {
-      method: "POST",
-      headers: {
-        ...tokenHeader,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(entryStates),
-    })
+    return await fetch(
+      `https://git.heroku.com/smart-dream-journal-frontend.git/profile/journal`,
+      {
+        method: "POST",
+        headers: {
+          ...tokenHeader,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(entryStates),
+      }
+    )
       .then((response) => {
         return response.json();
       })

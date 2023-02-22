@@ -19,13 +19,16 @@ function App() {
   useEffect(() => {
     // check for access token (context that checks token saved in local storage)
     if (tokenHeader) {
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/profile/journal/entries`, {
-        method: "POST",
-        headers: {
-          ...tokenHeader,
-          "Content-Type": "application/json",
-        },
-      })
+      fetch(
+        `https://git.heroku.com/smart-dream-journal-frontend.git/profile/journal/entries`,
+        {
+          method: "POST",
+          headers: {
+            ...tokenHeader,
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then((response) => {
           return response.json();
         })
