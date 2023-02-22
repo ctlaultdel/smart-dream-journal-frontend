@@ -1,0 +1,29 @@
+.new-post-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(164, 195, 211, 0.731);
+    padding: 5%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.buttons {
+    margin-top: 4%;
+    margin-left: 4%;
+    border-radius: 12px;
+    padding:0.5% 1%;
+    font-size: 130%;
+    background-color:  rgba(232, 232, 226, 0.904);
+}
+
+.title-box {
+    width: 97%;
+}
+
+.keyword-box {
+    width: 94%;
+}
+
+.description-box {
+    width: 100%;
+}
