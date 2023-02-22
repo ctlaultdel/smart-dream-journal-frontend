@@ -55,11 +55,6 @@ function Navigation() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/profile/calendar">
-                    Calendar
-                  </NavLink>
-                </li>
-                <li className="nav-item">
                   <NavLink className="nav-link" to="/profile/journal">
                     Journal
                   </NavLink>
