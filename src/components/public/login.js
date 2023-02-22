@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/authContext";
 import "./login.css";
 
 async function getAccessToken(credentials) {
-  return fetch(`https://smart-dream-journal.herokuapp.com/token`, {
+  return fetch("https://smart-dream-journal.herokuapp.com/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

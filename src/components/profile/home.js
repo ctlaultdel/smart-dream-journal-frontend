@@ -8,8 +8,8 @@ function Home() {
   const { currentUserName } = useAuth();
 
   return (
-    <section class="container">
-      <section class="row align-items-center my-5">
+    <section className="container">
+      <section className="row align-items-center my-5">
         <img src={fairyDreamImage} alt="Dream Clouds" className="home-img" />
         <section className="col-lg-5">
           <h1 className="font-weight-light">{`Welcome Back ${currentUserName}!`}</h1>

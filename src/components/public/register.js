@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 // Function for API post request for user registration
 async function registerUser(credentials) {
-  return fetch(`https://smart-dream-journal.herokuapp.com/register`, {
+  return fetch("https://smart-dream-journal.herokuapp.com/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
