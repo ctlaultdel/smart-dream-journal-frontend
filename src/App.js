@@ -20,7 +20,7 @@ function App() {
     // check for access token (context that checks token saved in local storage)
     if (tokenHeader) {
       fetch(
-        `https://git.heroku.com/smart-dream-journal-frontend.git/profile/journal/entries`,
+        `https://smart-dream-journal.herokuapp.com/profile/journal/entries`,
         {
           method: "POST",
           headers: {
