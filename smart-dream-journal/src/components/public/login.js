@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/authContext";
+import { useAuth } from "../../contexts/authContext";
+import "./login.css";
 
 async function getAccessToken(credentials) {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/token`, {
@@ -75,7 +76,9 @@ function Login() {
                   placeholder="password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">Login</button>
+                <button type="submit" className="login-button">
+                  Login
+                </button>
               </section>
             </form>
           </div>

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/authContext";
+import { useAuth } from "../../contexts/authContext";
+import "./logout.css";
 
 function Logout() {
   // contexts
@@ -28,7 +29,11 @@ function Logout() {
           <div className="col-lg-5">
             <h1>Are you sure you want to log out?</h1>
             <section>
-              <button onClick={handleSubmit} type="submit">
+              <button
+                className="logout-button"
+                onClick={handleSubmit}
+                type="submit"
+              >
                 Logout
               </button>
             </section>

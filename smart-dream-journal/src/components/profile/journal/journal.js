@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
-import { useAuth } from "../../contexts/authContext";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../contexts/authContext";
 import NewEntryPopup from "./newEntryForm";
-import { useParams, useNavigate } from "react-router";
+import "./journal.css";
 
 function Journal() {
+  const navigate = useNavigate();
   // contexts
   const { tokenHeader, setUserEntries, userEntries } = useAuth();
+
   // journal form entry states
   const [date, setDate] = useState(Date.now());
   const [title, setTitle] = useState("");
@@ -14,7 +16,6 @@ function Journal() {
   const [description, setDescription] = useState("");
   const [mood, setMood] = useState("");
   const [trigger, setTrigger] = useState(false);
-  const navigate = useNavigate();
 
   // Function for API post request for new entry
   async function postNewEntry(entryStates) {
@@ -43,39 +44,37 @@ function Journal() {
       date,
     });
     // update the local storage USERENTRIES to add new journal entry
-    const entries = { ...userEntries, ...newEntry };
+    const entries = [...userEntries, ...newEntry];
     localStorage.setItem("USERENTRIES", JSON.stringify(entries));
     setUserEntries(JSON.parse(localStorage.getItem("USERENTRIES")));
     setTrigger(false);
+    navigate("/profile");
   };
-  //  // remove the removed entry from userEntries local storage
-  //  const entries = userEntries.filter(
-  //   (entry) => entry.id !== parseInt(entryID)
-  // );
-  // localStorage.setItem("USERENTRIES", JSON.stringify(entries));
-  // setUserEntries(JSON.parse(localStorage.getItem("USERENTRIES")));
-  // navigate("/journal");
+
+  const cancelPost = () => {
+    setTrigger(false);
+  };
 
   return (
-    <div className="home">
-      <div className="container">
-        <h1 className="text-center mt-5">Journal Entries</h1>
-        <br></br>
-        <button onClick={(e) => setTrigger(true)}>
+    <section>
+      <h1 className="text-center mt-5">Journal Entries</h1>
+      <section>
+        <button className="post-button" onClick={(e) => setTrigger(true)}>
           Post New Journal Entry
         </button>
-        <NewEntryPopup
-          trigger={trigger}
-          handleSubmit={handleSubmit}
-          setDate={setDate}
-          setTitle={setTitle}
-          setKeyWords={setKeyWords}
-          setDescription={setDescription}
-          setMood={setMood}
-        />
-        <Outlet />
-      </div>
-    </div>
+      </section>
+      <NewEntryPopup
+        trigger={trigger}
+        handleSubmit={handleSubmit}
+        cancelPost={cancelPost}
+        setDate={setDate}
+        setTitle={setTitle}
+        setKeyWords={setKeyWords}
+        setDescription={setDescription}
+        setMood={setMood}
+      />
+      <Outlet />
+    </section>
   );
 }
 

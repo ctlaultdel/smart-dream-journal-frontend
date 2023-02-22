@@ -1,12 +1,13 @@
 import React from "react";
 import InputEmoji from "react-input-emoji";
+import "./newEntryForm.css";
 
 function NewEntryPopup(props) {
   if (props.trigger) {
     return (
-      <form onSubmit={props.handleSubmit}>
+      <form onSubmit={props.handleSubmit} className="new-post-form-wrapper">
         <section>
-          <label htmlFor="date" />
+          <label htmlFor="date">Date: </label>
           <input
             type="date"
             placeholder="YYYY-MM-DD"
@@ -14,40 +15,46 @@ function NewEntryPopup(props) {
           />
         </section>
         <section>
-          <label htmlFor="title" />
+          <label htmlFor="title">Title: </label>
           <input
+            className="title-box"
             type="text"
             placeholder="title"
             onChange={(e) => props.setTitle(e.target.value)}
           />
         </section>
         <section>
-          <label htmlFor="keywords" />
+          <label htmlFor="keywords">Keywords: </label>
           <input
+            className="keyword-box"
             type="text"
-            placeholder="keywords"
+            placeholder="e.g spider, ocean, detective"
             onChange={(e) => props.setKeyWords(e.target.value)}
           />
         </section>
         <section>
-          <label htmlFor="description" />
-          <input
-            type="text"
-            placeholder="description"
+          <label htmlFor="description">Description: </label>
+          <textarea
+            className="description-box"
+            placeholder="Describe your dream ..."
             onChange={(e) => props.setDescription(e.target.value)}
-          />
+          ></textarea>
         </section>
         <section>
-          <label htmlFor="testMood">Dream Mood</label>
           <InputEmoji
             value={props.mood}
             onChange={props.setMood}
             cleanOnEnter
-            placeholder="Dream Mood Emoji"
+            placeholder="Select a dream mood emoji"
           />
         </section>
         <section>
-          <button type="submit">Submit</button>
+          <button type="submit" className="buttons">
+            Submit
+          </button>
+          <button type="submit" onClick={props.cancelPost} className="buttons">
+            Cancel
+          </button>
         </section>
       </form>
     );

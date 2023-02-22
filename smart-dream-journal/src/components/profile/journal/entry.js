@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router";
-import { useAuth } from "../../contexts/authContext";
+import { useAuth } from "../../../contexts/authContext";
+import "./entry.css";
 
 function Entry() {
   const { userEntries, setUserEntries } = useAuth();
@@ -47,17 +48,17 @@ function Entry() {
   };
 
   return (
-    <div className="home">
-      <div className="container">
-        <h1 className="mt-5">
-          {entry.title} {entry.mood}
-        </h1>
-        <h6 className="mb-5">{entry.date}</h6>
-        <p>Keywords: {entry.keywords}</p>
-        <p>Description: {entry.description}</p>
-        <button onClick={clickDeleteButton}>Delete Entry</button>
-      </div>
-    </div>
+    <section className="entry-wrapper">
+      <h1 className="mt-5">
+        {entry.title} {entry.mood}
+      </h1>
+      <h6 className="mb-5">{entry.date}</h6>
+      <p>Keywords: {entry.keywords}</p>
+      <p>Description: {entry.description}</p>
+      <button onClick={clickDeleteButton} className="delete-button">
+        Delete Entry
+      </button>
+    </section>
   );
 }
 export default Entry;

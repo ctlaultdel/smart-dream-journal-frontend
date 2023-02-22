@@ -5,14 +5,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("./imgs/sleeping.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: beige;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-body {
-  background-image: url("../public/sleeping.jpg");
-  background-size: 1300px;
 }
