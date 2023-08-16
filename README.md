@@ -1,2 +1,3 @@
 # Smart Dream Journal Frontend React App
-[Smart Dream Journal Web App URL](https://smart-dream-journal-frontend.herokuapp.com/)
+
+![Uploading Screenshot 2023-02-16 at 6.55.42 PM.png…]()
