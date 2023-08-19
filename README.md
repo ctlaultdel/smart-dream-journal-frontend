@@ -4,7 +4,7 @@ Register New Account
 ![Register New Account Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/registeraccountpage.png)
 
 Login Page
-![Login Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/loginpage.png)
+![Login Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/loginPage.png)
 
 Profile Home Page
 ![Profile Home Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/profilepage.png)
