@@ -12,10 +12,9 @@ Profile Home Page
 Journal Entries Page
 ![Journal Entries Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/journalentries.png)
 
-Dream Analyses Page
-![Dream Analyses Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/journalanalyses.png)
-
-
 Post New Journal Entry
 ![Post New Journal Entry Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/postnewentry.png)
+
+Dream Analyses Page
+![Dream Analyses Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/journalanalyses.png)
 
