@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0d579243.css",
+    "main.js": "/static/js/main.085025ea.js",
+    "static/media/sleeping.jpg": "/static/media/sleeping.51d097aed0cad2dfb4a1.jpg",
+    "static/media/fairyTaleDream.webp": "/static/media/fairyTaleDream.e20e03e950d6c3457a67.webp",
+    "index.html": "/index.html",
+    "main.0d579243.css.map": "/static/css/main.0d579243.css.map",
+    "main.085025ea.js.map": "/static/js/main.085025ea.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0d579243.css",
+    "static/js/main.085025ea.js"
+  ]
+}
