@@ -8,7 +8,7 @@ function Entries() {
   const { accessToken, userEntries } = useAuth();
 
   if (accessToken) {
-    const entriesList = userEntries.map((entry) => {
+    const entriesList = userEntries?.map((entry) => {
       return (
         <section key={entry.id}>
           <li>

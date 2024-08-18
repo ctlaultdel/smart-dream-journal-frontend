@@ -4,13 +4,16 @@ import { useAuth } from "../../contexts/authContext";
 import "./login.css";
 
 async function getAccessToken(credentials) {
-  return fetch("https://smart-dream-journal.herokuapp.com/token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  })
+  return fetch(
+    "https://smart-dream-journal-backend-bf5b1011b117.herokuapp.com/token",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(credentials),
+    }
+  )
     .then((response) => {
       if (response.status === 200) {
         return response.json();

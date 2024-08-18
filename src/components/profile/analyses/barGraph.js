@@ -15,8 +15,9 @@ export default function BarGraph() {
   const { userEntries } = useAuth();
 
   // collect dream moods counts for bar graph data
+
   const data = Object.values(
-    userEntries.reduce((a, { mood }) => {
+    userEntries?.reduce((a, { mood }) => {
       a[mood] = a[mood] || { mood: mood, count: 0 };
       a[mood].count++;
       return a;
