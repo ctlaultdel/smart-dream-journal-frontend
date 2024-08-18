@@ -17,7 +17,7 @@ function Entry() {
 
   async function deleteEntry(entryID) {
     return await fetch(
-      `https://smart-dream-journal-backend-bf5b1011b117.herokuapp.com/profile/journal/${entryID}`,
+      `https://smart-dream-journal-backend-bf5b1011b117.herokuapp.com/profile/journal/${entryID}/`,
       {
         method: "POST",
         headers: {
