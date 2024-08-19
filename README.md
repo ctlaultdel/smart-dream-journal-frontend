@@ -1,9 +1,7 @@
 # Smart Dream Journal Frontend React App
 
-https://smart-dream-journal-frontend-ba3951debbfd.herokuapp.com/login
-
-Register New Account
-![Register New Account Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/registeraccountpage.png)
+Register an Account and start logging your dreams!
+[https://smart-dream-journal-frontend-ba3951debbfd.herokuapp.com/login](https://smart-dream-journal-frontend-ba3951debbfd.herokuapp.com/register)
 
 Login Page
 ![Login Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/loginPage.png)
