@@ -3,6 +3,15 @@
 Register an Account and start logging your dreams!
 [https://smart-dream-journal-frontend-ba3951debbfd.herokuapp.com/login](https://smart-dream-journal-frontend-ba3951debbfd.herokuapp.com/register)
 
+Or explore with a test account!
+https://smart-dream-journal-frontend-ba3951debbfd.herokuapp.com/register
+
+_Test Account Credentials_
+
+username: alpinista24
+
+password: alpinista24
+
 Login Page
 ![Login Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/loginPage.png)
 
