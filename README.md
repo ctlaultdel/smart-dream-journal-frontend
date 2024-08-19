@@ -14,6 +14,8 @@ password: alpinista24
 
 
 
+_______________________________________________________________________________________________________________________________________________________________________________________________________________
+
 **Login Page**
 ![Login Page](https://github.com/ctlaultdel/smart-dream-journal-frontend/blob/main/pictures/loginPage.png)
 
