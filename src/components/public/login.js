@@ -15,13 +15,11 @@ async function getAccessToken(credentials) {
     }
   )
     .then((response) => {
-      console.log(response.status);
       if (response.status === 200) {
         return response.json();
       }
     })
     .then((data) => {
-      console.log(data);
       return data.access_token;
     })
     .catch((error) => console.log(error));
