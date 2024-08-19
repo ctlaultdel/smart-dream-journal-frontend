@@ -20,7 +20,7 @@ function App() {
     // check for access token (context that checks token saved in local storage)
     if (tokenHeader) {
       fetch(
-        "https://smart-dream-journal-backend-63ee0b4cbbaa.herokuapp.com/profile/journal/entries/",
+        "https://smart-dream-journal-backend-63ee0b4cbbaa.herokuapp.com/profile/journal/entries",
         {
           method: "POST",
           headers: {
@@ -33,7 +33,6 @@ function App() {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
           setUserEntries(data);
           localStorage.setItem("USERENTRIES", JSON.stringify(data));
         });
