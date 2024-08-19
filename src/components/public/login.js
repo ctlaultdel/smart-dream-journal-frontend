@@ -5,7 +5,7 @@ import "./login.css";
 
 async function getAccessToken(credentials) {
   return fetch(
-    "https://smart-dream-journal-backend-bf5b1011b117.herokuapp.com/token/",
+    "https://smart-dream-journal-backend-63ee0b4cbbaa.herokuapp.com/token/",
     {
       method: "POST",
       headers: {

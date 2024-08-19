@@ -20,7 +20,7 @@ function Journal() {
   // Function for API post request for new entry
   async function postNewEntry(entryStates) {
     return await fetch(
-      `https://smart-dream-journal-backend-bf5b1011b117.herokuapp.com/profile/journal/`,
+      `https://smart-dream-journal-backend-63ee0b4cbbaa.herokuapp.com/profile/journal/`,
       {
         method: "POST",
         headers: {
