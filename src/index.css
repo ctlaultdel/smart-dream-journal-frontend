@@ -7,13 +7,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url("./imgs/sleeping.jpg");
   -webkit-background-size: 100%; 
--moz-background-size: 100%; 
--o-background-size: 100%; 
-background-size: 100%; 
--webkit-background-size: cover; 
--moz-background-size: cover; 
--o-background-size: cover; 
-background-size: cover;
+  -moz-background-size: 100%; 
+  -o-background-size: 100%; 
+  background-size: 100%; 
+  -webkit-background-size: cover; 
+  -moz-background-size: cover; 
+  -o-background-size: cover; 
+  background-size: cover;
   background-repeat: no-repeat;
   background-color: beige;
 }
