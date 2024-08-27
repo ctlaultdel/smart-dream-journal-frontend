@@ -1,12 +1,12 @@
 .main-img {
-    margin-left: 4%;
+    margin-left: 2em;
+    margin-right: 2em;
     height: auto;
-    width: 40%;
+    width: 30em;
 }
 
 .main-excerpt-container {
     display: flex;
-    /* flex-direction: column-reverse; */
     background-color: rgba(232, 232, 226, 0.731);
     border: 5px black;
     padding: 3%;
@@ -16,18 +16,17 @@
 .tutorial-container {
     display: flex;
     background-color: rgba(232, 232, 226, 0.731);
-    border: 5px black;
+    border: 0.5em black;
     flex-direction: row;
     flex-wrap: wrap;
     padding-bottom: 6em;
 }
 
 .tutorial-polaroid {
-    margin-top: 4%;
-    width: 55%;
-    margin-left: 4%;
-    /* background-color: white; */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 4em;
+    width: 35em;
+    margin-left: 4em;
+    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.25em 0 rgba(0, 0, 0, 0.19);
 }
 
 .tutorial-header-container {
@@ -35,11 +34,11 @@
 }
 
 .tutorial-textbox {
-    margin: 4%;
+    margin: 4em;
     margin-bottom: auto;
-    width: 30%;
+    width: 23em;
     background-color: whitesmoke;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.25em 0 rgba(0, 0, 0, 0.19);
 
     h1 {
         text-align: center;
