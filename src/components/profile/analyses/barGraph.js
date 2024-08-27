@@ -27,19 +27,24 @@ export default function BarGraph() {
   return (
     <section>
       <header className="bar-plot-header">Frequency of Dream Moods</header>
-      <BarChart width={800} height={400} data={data}>
+      <BarChart width={1000} height={600} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
           dataKey="mood"
           style={{ fontSize: "2rem" }}
-          label={{ value: "Dream Mood Emoji" }}
+          label={
+            {
+              // value: "Dream Mood Emoji",
+              // fontSize: "1.5rem",
+            }
+          }
         />
         <YAxis
           style={{ fontSize: "1rem" }}
           label={{
             value: "Number of Dream Mood Entries",
             angle: -90,
-            position: "insideLeft",
+            position: "center",
           }}
         />
         <Tooltip />
