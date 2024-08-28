@@ -76,8 +76,8 @@ function Main() {
             <h1>Analyze your dreams</h1>
             <hr />
             <p>
-              Click on analyses to see Smart Dream Journal's analysis your
-              dreams. You can visualize how many times you dreamt a specific
+              Click on analyses to see Smart Dream Journal's analysis of your
+              dreams. You can visualize how many times you dreamt of a specific
               dream emoji. Hover over each bar on the bar chart to see each
               count.
             </p>
