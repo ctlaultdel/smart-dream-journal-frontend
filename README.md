@@ -1,21 +1,5 @@
 # Smart Dream Journal Frontend React App
 
-Register an Account and start logging your dreams!
-https://smart-dream-journal-frontend-ba3951debbfd.herokuapp.com/register
-
-Or explore a test account!
-https://smart-dream-journal-frontend-ba3951debbfd.herokuapp.com/login
-
-
-
-_Test Account Credentials_
-
-username: alpinista24
-
-password: alpinista24
-
-
-
 _______________________________________________________________________________________________________________________________________________________________________________________________________________
 
 **Login Page**
